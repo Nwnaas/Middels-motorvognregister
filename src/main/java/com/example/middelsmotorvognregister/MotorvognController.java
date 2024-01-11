@@ -3,6 +3,7 @@ package com.example.middelsmotorvognregister;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +14,27 @@ public class MotorvognController {
 
     @GetMapping("/lagre")
     public void lagreBiller(Motorvogn innBiler){
-        alleBiler.add(innBiler);
+
+        String navn = innBiler.getNavn();
+
+        InsertData.insertDataIntoDatabase(innBiler);
     }
     @GetMapping("/hentAlle")
-    public List<Motorvogn> hentAlle(){
-        return alleBiler;
+    public ArrayList<Motorvogn> hentAlle(){
+
+        ArrayList<Motorvogn> motorvogns =  com.example.middelsmotorvognregister.databaseHandlers.getBiler.getAll();
+
+        return motorvogns;
     }
 
     @GetMapping("/slettAlle")
     public void slettAlle(){
-        alleBiler.clear();
+        com.example.middelsmotorvognregister.databaseHandlers.slett.slettAlle();
+    }
+
+    @GetMapping("/slettEn")
+    public void slettEn(String regnr){
+        com.example.middelsmotorvognregister.databaseHandlers.slett.slettEn(regnr);
     }
 
 }

@@ -37,7 +37,7 @@ function addProdukt() {
         kjonn: getKjonnFromPersonNr(personNr),
         navn: $("#navn").val(),
         adresse: $("#adresse").val(),
-        bilSkilt: bilSkilt.toUpperCase(),
+        bilSkilt: bilSkilt.toLowerCase(),
         bilMerke: $("#bilMerke").val(),
         bilModel: $("#bilModel").val(),
         bilFarge: genererFargeKode(bilFargeInput),

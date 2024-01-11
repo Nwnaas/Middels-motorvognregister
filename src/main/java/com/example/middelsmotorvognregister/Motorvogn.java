@@ -11,9 +11,8 @@ public class Motorvogn {
     private String bilModel;
     private String bilFarge;
     private String sted;
-    private String fjern;
 
-    public Motorvogn(String personNr, String kjonn, String navn, String adresse, String bilSkilt, String bilMerke, String bilModel, String bilFarge, String sted, String fjern) {
+    public Motorvogn(String personNr, String kjonn, String navn, String adresse, String bilSkilt, String bilMerke, String bilModel, String bilFarge, String sted) {
         this.personNr = personNr;
         this.kjonn = kjonn;
         this.navn = navn;
@@ -23,7 +22,6 @@ public class Motorvogn {
         this.bilModel = bilModel;
         this.bilFarge = bilFarge;
         this.sted = sted;
-        this.fjern = fjern;
     }
 
     public Motorvogn() {
@@ -73,8 +71,4 @@ public class Motorvogn {
     public String getSted() { return sted; }
 
     public void setSted(String sted) { this.sted = sted; }
-
-    public String getFjern() { return fjern; }
-
-    public void setFjern(String fjern) { this.fjern = fjern; }
 }
