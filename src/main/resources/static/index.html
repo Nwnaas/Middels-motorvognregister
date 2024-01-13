@@ -174,20 +174,27 @@
         $.get("/slettAlle", hentAlle);
     }
 
-    function slettEn(regnr) {
+    function slettEn(regnr2) {
+        const data = {
+            regnr : regnr2
+        }
         //let regnr = regnr2.toUpperCase().replaceAll(" ", "");
-        console.log(regnr);
-        $.get("/slettEn", regnr, hentAlle);
+        //console.log(data);
+        $.get("/slettEn", data, hentAlle);
     }
 
     function hentAlle() {
         $.get("/hentAlle", formaterData);
     }
 
+    $(document).ready(function () {
+        hentAlle();
+    })
+
     function formaterData(bil) {
         const headerRow = "<tr><th>PersonNr</th><th>Kjønn</th><th>Navn</th><th>Adresse</th><th>Bilskilt</th><th>Bilmerke</th><th>Bilmodel</th><th>Bilfarge</th><th>Registrerings Sted</th><th><button onclick=\" slettKundene()\" id=\"slettAlle\">Slett Alle</button></th></tr>";
         const rows = bil.map(item =>
-            `<tr><td>${item.personNr}</td><td>${item.kjonn}</td><td>${item.navn}</td><td>${item.adresse}</td><td>${item.bilSkilt}</td><td>${item.bilMerke}</td><td>${item.bilModel}</td>${item.bilFarge}<td>${item.sted}</td><td><button onclick=\"slettEn(\"${item.bilSkilt}\")\" id=\"slett\">Slett</button></td></tr>`
+            `<tr><td>${item.personNr}</td><td>${item.kjonn}</td><td>${item.navn}</td><td>${item.adresse}</td><td>${item.bilSkilt}</td><td>${item.bilMerke}</td><td>${item.bilModel}</td>${item.bilFarge}<td>${item.sted}</td><td><button onclick=\"slettEn('${item.bilSkilt}')\" id=\"slett\">Slett</button></td></tr>`
         );
 
         $("#bilTable").html(headerRow + rows.join(''));
